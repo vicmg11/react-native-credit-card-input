@@ -20,7 +20,7 @@ const s = StyleSheet.create({
     alignItems: "center",
   },
   form: {
-    marginTop: 20,
+    marginTop: 15,
   },
   inputContainer: {
     marginLeft: 20,
@@ -31,6 +31,11 @@ const s = StyleSheet.create({
   input: {
     height: 40,
   },
+  horizontal: {
+    flex: 1, 
+    marginTop: 10,
+    flexDirection: 'row'
+  }
 });
 
 const CVC_INPUT_WIDTH = 70;
@@ -147,7 +152,8 @@ export default class CreditCardInput extends Component {
       cardImageFront, cardImageBack, inputContainerStyle,
       values: { number, expiry, cvc, name, type }, focused,
       allowScroll, requiresName, requiresCVC, requiresPostalCode,
-      cardScale, cardFontFamily, cardBrandIcons, cardViewLabels
+      cardScale, cardFontFamily, cardBrandIcons, cardViewLabels,
+      displayHorizontal
     } = this.props;
 
     return (
@@ -164,9 +170,9 @@ export default class CreditCardInput extends Component {
           expiry={expiry}
           cvc={cvc} 
           cardViewLabels={cardViewLabels}
-          />
+        />
         <ScrollView ref="Form"
-          horizontal
+          horizontal={displayHorizontal}
           keyboardShouldPersistTaps="always"
           scrollEnabled={allowScroll}
           showsHorizontalScrollIndicator={false}
